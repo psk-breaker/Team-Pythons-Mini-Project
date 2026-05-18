@@ -1,5 +1,5 @@
 import csv
-
+from display import display_header
 
 #---------------CSV FUNCTIONS---------------------
 
@@ -7,7 +7,7 @@ import csv
 # FUNCTION TO EXTRACT COURIER DATA FROM CSV
 def load_couriers():
     couriers_list = []
-    with open('couriers.csv', 'r') as f:
+    with open('Team-Pythons-Mini-Project/couriers.csv', 'r') as f:
         reader = csv.DictReader(f)
         for row in reader:
             couriers_list.append(dict(row))
@@ -18,7 +18,14 @@ def load_couriers():
 
 
 #---------------APP FUNCTIONS---------------------
-
+# Couriers Menu:
+def display_courier_menu():
+    display_header("Couriers")
+    print("\n0: Return to main menu")
+    print("1: View couriers")
+    print("2: Add a courier")
+    print("3: Update courier information")
+    print("4: Delete courier information")
 
 # FUNCTION TO ADD A COURIER NEEDED
 def add_courier(couriers):
