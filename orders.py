@@ -1,4 +1,5 @@
 import csv
+from display import display_header
 
 #---------------CSV STUFF---------------------
 
@@ -17,7 +18,15 @@ def create_order_menu():
 
 
 #---------------APP FUNCTIONS---------------------
-
+# Orders Menu:
+def display_order_menu():
+    display_header("Orders")
+    print("\n0: Return to main menu")
+    print("1: View orders")
+    print("2: Add order")
+    print("3: Update order status")
+    print("4: Update order info")
+    print("5: Delete order")
 
 def view_orders(orders):
     print("\nOrders List:")

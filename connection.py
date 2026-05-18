@@ -27,10 +27,19 @@ try:
         create_table_sql = create_table()
         cursor.execute(create_table_sql)
     
-        
-
 # ============================================
 #                 LOAD
+
+        print("Loading products from CSV...")
+
+        with open("Team-Pythons-Mini-Project/products.csv", "r") as file:
+            reader = csv.DictReader(file)
+
+            for row in reader:
+                cursor.execute(
+                    "INSERT INTO products (product_name, price) VALUES (%s, %s);",
+                    (row["name"], row["price"])
+                )
 
         print('Commiting. . .')
         connection.commit()
@@ -42,7 +51,6 @@ try:
             print(row)
 
         print('Closing cursor. . .')
-        # Closes the cursor so will be unusable from this point
         cursor.close()
 
         # The connection will automatically close here
@@ -51,4 +59,3 @@ except Exception as ex:
 
 # Leave this line here!
 print('All done!')
-        
