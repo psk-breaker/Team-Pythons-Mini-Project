@@ -7,7 +7,7 @@ from display import display_header
 
 def create_product_menu():
     result = []
-    with open('products.csv', mode='r', newline='') as data:
+    with open('Team-Pythons-Mini-Project/products.csv', mode='r', newline='') as data:
         reader = csv.DictReader(data)
         for row in reader:
             result.append(row)
@@ -18,6 +18,18 @@ def create_product_menu():
 
 
 #---------------APP FUNCTIONS---------------------
+<<<<<<< HEAD
+=======
+# DISPLAY_PRODUCT_NAVIGATION_MENU:
+def display_product_navigation_menu():
+    display_header("Products")
+    print("\n0: Return to main menu")
+    print("1: View products")
+    print("2: Add product")
+    print("3: Update product")
+    print("4: Delete product")
+
+>>>>>>> 23ffa645eb8d0e0f5ad0737df89438656f0b7309
 
     
 

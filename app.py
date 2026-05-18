@@ -3,9 +3,11 @@ from orders import *
 from couriers import *
 from display import *
 from save import *
+from connection import *
 
 # ================================================================================
 
+extract_from_database()
 Products = create_product_menu()
 orders = create_order_menu()
 couriers = load_couriers()
