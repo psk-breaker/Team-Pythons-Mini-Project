@@ -38,6 +38,12 @@ def create_database_tables():
             cursor.execute(create_table_sql)
             print('Courier table created successfully.')
 
+            #Create Order Table
+            cursor.execute("DROP TABLE IF EXISTS orders;")
+            print('Creating Order table...')
+            create_order_table_sql = create_order_table()
+            cursor.execute(create_order_table_sql)
+
 
     # ============================================
     #                FILL TABLES FROM CSV

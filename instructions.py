@@ -20,6 +20,17 @@ def create_courier_table():
             """
     return result
 
+def create_order_table():
+    result = """
+    CREATE TABLE IF NOT EXISTS Orders (
+        id SERIAL PRIMARY KEY,
+        customer_name VARCHAR(100) NOT NULL,
+        customer_address VARCHAR(255) NOT NULL,
+        customer_phone_number VARCHAR(20) NOT NULL,
+        status VARCHAR(50) NOT NULL DEFAULT 'Pending'
+    );
+    """
+
 
 # def create_orders_table():       
 
