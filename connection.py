@@ -15,18 +15,26 @@ try:
 
     ### SETUP THE DATABASE CONNECTION
     print('Opening connection...')
-    conn_string = f'host={host_name} dbname={database_name} user={user_name} password={user_password}'
+    conn_string = f'host={host_name} port=5432 dbname={database_name} user={user_name} password={user_password}'
     # Establish a database connection
     with psycopg2.connect(conn_string) as connection:
 
         print('Opening cursor...')
         cursor = connection.cursor()
         cursor.execute("DROP TABLE IF EXISTS products;")
+        cursor.execute("DROP TABLE IF EXISTS couriers;")
 
         print('Creating table...')
         create_table_sql = create_table()
         cursor.execute(create_table_sql)
-    
+        
+        print('Creating couriers table...')
+        courier_table_sql = create_couriers_table()
+        cursor.execute(courier_table_sql)
+
+        
+
+
         
 
 # ============================================

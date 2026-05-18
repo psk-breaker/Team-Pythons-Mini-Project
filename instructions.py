@@ -8,3 +8,12 @@ def create_table():
             );
             """
     return result
+
+def create_couriers_table():
+    result = """
+            CREATE TABLE couriers(
+            courier_id SERIAL PRIMARY KEY,
+            courier_name VARCHAR(100)
+            );
+            """
+    return result 
