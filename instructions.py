@@ -9,16 +9,6 @@ def create_product_table():
             """
     return result
 
-<<<<<<< HEAD
-def create_couriers_table():
-    result = """
-            CREATE TABLE couriers(
-            courier_id SERIAL PRIMARY KEY,
-            courier_name VARCHAR(100)
-            );
-            """
-    return result 
-=======
 
 def create_courier_table():
     result = """
@@ -39,11 +29,7 @@ def create_order_table():
         customer_phone_number VARCHAR(20) NOT NULL,
         status VARCHAR(50) NOT NULL DEFAULT 'Pending'
     );
-    """
-
-
-# def create_orders_table():       
-
+    """  
 
 # ============================================
 
@@ -56,7 +42,7 @@ def insert_into_products_table():
     return result
 
 
-def new_product(cursor, v1, v2):
+def new_product(cursor, v1, v2): 
     print('Inserting new product...')
     insert = insert_into_products_table()
     values = (f'{v1}', f'{v2}')
@@ -64,6 +50,13 @@ def new_product(cursor, v1, v2):
     new_id = cursor.fetchone()[0]
     print(f'Inserted record ID: {new_id}')
 
+def insert_into_couriers_table():
+    result = """
+        INSERT INTO couriers (courier_name)
+        VALUES (%s)
+        RETURNING courier_id;
+        """
+    return result 
     
 # ============================================
 
@@ -103,4 +96,3 @@ def new_product(cursor, v1, v2):
 
 # def fill_csv_from_orders_table():
 
->>>>>>> 23ffa645eb8d0e0f5ad0737df89438656f0b7309

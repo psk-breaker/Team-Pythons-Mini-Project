@@ -18,8 +18,6 @@ def create_product_menu():
 
 
 #---------------APP FUNCTIONS---------------------
-<<<<<<< HEAD
-=======
 # DISPLAY_PRODUCT_NAVIGATION_MENU:
 def display_product_navigation_menu():
     display_header("Products")
@@ -29,7 +27,6 @@ def display_product_navigation_menu():
     print("3: Update product")
     print("4: Delete product")
 
->>>>>>> 23ffa645eb8d0e0f5ad0737df89438656f0b7309
 
     
 
