@@ -59,7 +59,9 @@ def create_database_tables():
             # aalamm done
 
             # fill_couriers_table()
-            # sahour 
+            new_courier(cursor, "Zohran", "07418 72148")
+            new_courier(cursor, "Yasmin" "07369 36939")
+            new_courier(cursor, "Xavier" "07239 82391")
 
             # fill_orders_table()
             # ishak
