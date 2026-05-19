@@ -38,8 +38,12 @@ def create_database_tables():
             cursor.execute(create_table_sql)
             print('Courier table created successfully.')
 
-            # orders too
-            # ted
+            cursor.execute("DROP TABLE IF EXISTS orders;")
+            print('Creating Order table...')
+            create_order_table_sql = create_order_table()
+            cursor.execute(create_order_table_sql)
+            print('Order table created successfully.')
+
 
 
     # ============================================
@@ -148,3 +152,11 @@ def load_into_database():
         print('Failed to:', ex)
 
     print("Connection closed.")
+
+
+# =================================================================================
+# =================================================================================
+
+# test area for running the connection functions
+
+create_database_tables()
