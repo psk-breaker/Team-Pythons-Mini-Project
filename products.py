@@ -28,6 +28,52 @@ def display_product_navigation_menu():
     print("4: Delete product")
 
 
+    
+
+def display_product_navigation_menu():
+    display_header("PRODUCTS MENU")
+    print("\n0: Return to main menu")
+    print("1: View products")
+    print("2: Add product")
+    print("3: Update product")
+    print("4: Delete product")
+
+    print('''
+                ----  CAFFE APP  ----
+                    -- Products --
+          
+          0: Return to main menu
+          1: View Products
+          2: Add a Product
+          3: Update a Product
+          4: Delete a Product
+          ''')
+
+
+
+# FUNCTION TO REPLACE ELIF 1
+def display_products(products_menu):
+    lines = []
+    for i in range(len(products_menu)):
+        lines.append(f'{i}: {products_menu[i]}')
+    
+    printable_lines = '''\
+''' + '\n'.join(lines) + '''
+'''
+    print('''
+                ----  CAFFE APP  ----
+                    -- Products --
+          
+          Products:''')
+    print(printable_lines)
+
+
+def add_product(Products): 
+    new_product = input("Enter product name: ")
+    Products.append(new_product)
+    print(f" Here is the menu {Products}")
+    print("Product successfully added!") 
+    
 #FUNCTION UPDATED REPLACING ELIF 1
 def view_products(Products):
     print("\nProducts List: ")

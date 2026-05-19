@@ -18,10 +18,10 @@ def load_couriers():
 def save_couriers_to_csv(couriers):
     with open("couriers.csv", "w", newline="") as file:
         writer = csv.writer(file)
-        writer.writerow(["name", "phone"])
+        writer.writerow(["name", "phone_number"])
 
         for courier in couriers:
-            writer.writerow([courier["name"], courier["phone"]])
+            writer.writerow([courier["name"], courier["phone_number"]])
 
 #---------------APP FUNCTIONS---------------------
 # Couriers Menu:
@@ -36,12 +36,12 @@ def display_courier_menu():
 def view_couriers(couriers):
     print("\nCouriers List:")
     for index, courier in enumerate(couriers):
-        print(f"{index}: {courier['name']} - {courier['phone']}")
+        print(f"{index}: {courier['name']} - {courier['phone_number']}")
 
 def add_courier(couriers):
     new_courier = input("\nEnter courier name: ")
     new_courier_phone = input("Enter courier phone number: ")
-    couriers.append({'name': new_courier, 'phone': new_courier_phone})
+    couriers.append({'name': new_courier, 'phone_number': new_courier_phone})
     print(f"\n{new_courier} - {new_courier_phone} added to the courier list.")
 
 
@@ -49,7 +49,7 @@ def update_courier(couriers):
     print("\nHere are the current couriers:")
 
     for index, courier in enumerate(couriers):
-        print(f"{index}: {courier['name']} - {courier['phone']}")
+        print(f"{index}: {courier['name']} - {courier['phone_number']}")
 
     courier_to_update = input("\nSelect the courier you would like to change: ")
 
@@ -60,7 +60,7 @@ def update_courier(couriers):
             new_courier_name = input("Enter new courier name: ")
             new_courier_phone = input("Enter new courier's phone number: ")
             couriers[courier_to_update_index]['name'] = new_courier_name
-            couriers[courier_to_update_index]['phone'] = new_courier_phone
+            couriers[courier_to_update_index]['phone_number'] = new_courier_phone
             print(f"\nCourier successfully updated! {new_courier_name} - {new_courier_phone}")
         else:
             print("Invalid index entered.")
@@ -72,7 +72,7 @@ def delete_courier(couriers):
     print('Here are the current couriers:')
     # Print courier names and indexes.
     for i in range(len(couriers)):
-        print(f'{i}: {couriers[i]["name"]} - {couriers[i]["phone"]}')
+        print(f'{i}: {couriers[i]["name"]} - {couriers[i]["phone_number"]}')
 
     # Moved outside the loop so it only asks once
     courier_to_del = int(input("Enter the index of the courier to remove: "))
