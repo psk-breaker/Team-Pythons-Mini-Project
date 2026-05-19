@@ -20,6 +20,7 @@ def create_courier_table():
             """
     return result
 
+
 def create_order_table():
     result = """
     CREATE TABLE IF NOT EXISTS Orders (
@@ -30,10 +31,7 @@ def create_order_table():
         status VARCHAR(50) NOT NULL DEFAULT 'Pending'
     );
     """
-    return result
-
-
-# def create_orders_table():       
+    return result     
 
 
 # ============================================
