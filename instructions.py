@@ -15,7 +15,7 @@ def create_courier_table():
             CREATE TABLE IF NOT EXISTS couriers (
                 id SERIAL PRIMARY KEY,
                 courier_name VARCHAR(20) NOT NULL,
-                phone_number VARCHAR(11) NOT NULL
+                phone_number VARCHAR(15) NOT NULL
             );
             """
     return result

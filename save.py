@@ -22,11 +22,3 @@ def save_orders_to_csv(orders):
                 order["customer_phone_number"],
                 order["status"]
             ])
-
-def save_couriers_to_csv(couriers):
-    with open("couriers.csv", "w", newline="") as file:
-        writer = csv.writer(file)
-        writer.writerow(["name", "vehicle"])
-
-        for courier in couriers:
-            writer.writerow([courier["name"], courier["vehicle"]])

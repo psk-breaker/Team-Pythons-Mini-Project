@@ -38,6 +38,9 @@ def create_database_tables():
             cursor.execute(create_table_sql)
             print('Courier table created successfully.')
 
+            # orders too
+            # ted
+
 
     # ============================================
     #                FILL TABLES FROM CSV
@@ -49,10 +52,13 @@ def create_database_tables():
 
 
             # fill_products_table()
+            # aalamm done
 
             # fill_couriers_table()
+            # sahour 
 
             # fill_orders_table()
+            # ishak
 
 
     # ============================================
@@ -115,7 +121,6 @@ def extract_from_database():
     #                 CLOSE CONNECTION
 
             print('\nClosing cursor. . .')
-            # Closes the cursor so will be unusable from this point
             cursor.close()
             print('All done!')
 
@@ -126,3 +131,20 @@ def extract_from_database():
     print("Connection closed.")
 
 
+def load_into_database():
+    try:
+        # pull lists of products, couriers, orders from app.py into here
+        # and push them into database
+    
+    # ============================================
+    #                 CLOSE CONNECTION
+
+            print('\nClosing cursor. . .')
+            # cursor.close()
+            print('All done!')
+
+            # The connection will automatically close here
+    except Exception as ex:
+        print('Failed to:', ex)
+
+    print("Connection closed.")
