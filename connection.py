@@ -38,11 +38,12 @@ def create_database_tables():
             cursor.execute(create_table_sql)
             print('Courier table created successfully.')
 
-            #Create Order Table
             cursor.execute("DROP TABLE IF EXISTS orders;")
             print('Creating Order table...')
             create_order_table_sql = create_order_table()
             cursor.execute(create_order_table_sql)
+            print('Order table created successfully.')
+
 
 
     # ============================================
@@ -55,10 +56,15 @@ def create_database_tables():
 
 
             # fill_products_table()
-            fill_products_table(cursor)
+            # aalamm done
+
             # fill_couriers_table()
+            new_courier(cursor, "Zohran", "07418 72148")
+            new_courier(cursor, "Yasmin" "07369 36939")
+            new_courier(cursor, "Xavier" "07239 82391")
 
             # fill_orders_table()
+            # ishak
 
 
     # ============================================
@@ -121,7 +127,6 @@ def extract_from_database():
     #                 CLOSE CONNECTION
 
             print('\nClosing cursor. . .')
-            # Closes the cursor so will be unusable from this point
             cursor.close()
             print('All done!')
 
@@ -132,3 +137,28 @@ def extract_from_database():
     print("Connection closed.")
 
 
+def load_into_database():
+    try:
+        # pull lists of products, couriers, orders from app.py into here
+        # and push them into database
+    
+    # ============================================
+    #                 CLOSE CONNECTION
+
+            print('\nClosing cursor. . .')
+            # cursor.close()
+            print('All done!')
+
+            # The connection will automatically close here
+    except Exception as ex:
+        print('Failed to:', ex)
+
+    print("Connection closed.")
+
+
+# =================================================================================
+# =================================================================================
+
+# test area for running the connection functions
+
+create_database_tables()
