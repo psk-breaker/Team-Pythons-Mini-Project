@@ -173,6 +173,7 @@ def extract_from_database():
 # ==================================================================================
 
 
+
 def load_into_database(Products, couriers, orders):
     try:
         print('Opening connection...')
@@ -234,7 +235,10 @@ def load_into_database(Products, couriers, orders):
             cursor.close()
             print('All done!')
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> e48c0b51508c758deffb25d4117732607c90eccf
     except Exception as ex:
         print('Failed to:', ex)
 
