@@ -31,11 +31,7 @@ def create_order_table():
         status VARCHAR(50) NOT NULL DEFAULT 'Pending'
     );
     """
-<<<<<<< HEAD
-    return result     
-=======
     return result
->>>>>>> 9e8442898d1beb5e0a62311fb1d4ac967e2082de
 
 
 # ============================================

@@ -7,10 +7,10 @@ from connection import *
 
 # ================================================================================
 
-extract_from_database
-Products = create_product_menu()
-orders = create_order_menu()
-couriers = load_couriers()
+Products, couriers, orders = extract_from_database()
+#Products = create_product_menu()
+#orders = create_order_menu()
+#couriers = load_couriers()
 
 
 # ================================================================================
