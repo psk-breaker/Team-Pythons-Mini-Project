@@ -202,6 +202,29 @@ def load_into_database(Products, couriers, orders):
             connection.commit()
             print(f'Inserted {inserted} product records.')
 
+            print('Opening cursor...')
+            cursor = connection.cursor()
+
+        print('Loading couriers into database...')
+
+        for courier in couriers:
+            cursor.execute(
+        "INSERT INTO couriers (name, phone) VALUES (%s, %s)",
+        (
+            courier["name"],
+            courier["phone_number"]
+        )
+        )
+
+        connection.commit()
+        print("Couriers loaded into database successfully")
+
+            
+
+        print('\nClosing cursor. . .')
+        cursor.close()
+        print('All done!')
+    
 
 
 
