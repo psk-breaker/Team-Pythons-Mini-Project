@@ -14,7 +14,7 @@ def create_courier_table():
     result = """
             CREATE TABLE IF NOT EXISTS couriers (
                 id SERIAL PRIMARY KEY,
-                courier_name VARCHAR(100) NOT NULL,
+                name VARCHAR(100) NOT NULL,
                 phone_number VARCHAR(15) NOT NULL
             );
             """
@@ -55,7 +55,7 @@ def new_product(cursor, v1, v2):
 
 def insert_into_couriers_table():
     result = """
-        INSERT INTO couriers (courier_name, phone_number)
+        INSERT INTO couriers (name, phone_number)
         VALUES (%s, %s)
         RETURNING id;
         """

@@ -135,7 +135,7 @@ def extract_from_database():
 
             couriers = []
             for courier in records:
-                couriers.append({'name': courier[1], 'phone': courier[2]})
+                couriers.append({'name': courier[1], 'phone_number': courier[2]})
 
 
             # EXTRACT DATA FROM ORDERS TABLE
@@ -202,32 +202,20 @@ def load_into_database(Products, couriers, orders):
             connection.commit()
             print(f'Inserted {inserted} product records.')
 
-            print('Opening cursor...')
-            cursor = connection.cursor()
-
-        print('Loading couriers into database...')
-
-        for courier in couriers:
-            cursor.execute(
-        "INSERT INTO couriers (name, phone) VALUES (%s, %s)",
-        (
-            courier["name"],
-            courier["phone_number"]
-        )
-        )
-
-        connection.commit()
-        print("Couriers loaded into database successfully")
-
-            
-
-        print('\nClosing cursor. . .')
-        cursor.close()
-        print('All done!')
-    
 
 
+            print('Loading couriers into database...')
+            for courier in couriers:
+                cursor.execute(
+            "INSERT INTO couriers (name, phone_number) VALUES (%s, %s)",
+            (
+                courier["name"],
+                courier["phone_number"]
+            )
+            )
 
+            connection.commit()
+            print("Couriers loaded into database successfully")
 
 
               #LOAD ORDERS INTO DATABASE
@@ -258,10 +246,6 @@ def load_into_database(Products, couriers, orders):
             cursor.close()
             print('All done!')
 
-<<<<<<< HEAD
-
-=======
->>>>>>> e48c0b51508c758deffb25d4117732607c90eccf
     except Exception as ex:
         print('Failed to:', ex)
 
