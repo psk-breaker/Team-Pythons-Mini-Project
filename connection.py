@@ -218,4 +218,3 @@ def load_into_database(Products, couriers, orders):
 # test area for running the connection functions
 
 create_database_tables()
-extract_from_database()
