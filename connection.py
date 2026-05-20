@@ -52,8 +52,9 @@ def create_database_tables():
             print('Filling tables from CSV files...')
 
             # EXAMPLE
-            new_product(cursor, 'Pizza', 9.99)
-
+            new_product(cursor, 'Mocha', 3.50)
+            new_product(cursor, 'Americano', 2.39)
+            new_product(cursor, 'Chai Latte', 2.75)
 
             # fill_products_table()
             # aalamm done
@@ -171,10 +172,31 @@ def extract_from_database():
 # ==================================================================================
 
 
-def load_into_database():
+def load_into_database(Products, couriers, orders):
     try:
-        # pull lists of products, couriers, orders from app.py into here
-        # and push them into database
+        ### SETUP THE DATABASE CONNECTION
+        print('Opening connection...')
+        conn_string = f'host={host_name} dbname={database_name} user={user_name} password={user_password}'
+        # Establish a database connection
+        with psycopg2.connect(conn_string) as connection:
+
+            print('Opening cursor...')
+            cursor = connection.cursor()
+
+     # ============================================
+
+        # teds loading products into the database
+
+
+        # ishak loading couriers into database
+
+
+
+        # loading orders someonelse
+
+
+
+
     
     # ============================================
     #                 CLOSE CONNECTION
