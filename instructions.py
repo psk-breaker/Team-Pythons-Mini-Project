@@ -14,7 +14,7 @@ def create_courier_table():
     result = """
             CREATE TABLE IF NOT EXISTS couriers (
                 id SERIAL PRIMARY KEY,
-                courier_name VARCHAR(100) NOT NULL,
+                name VARCHAR(100) NOT NULL,
                 phone_number VARCHAR(15) NOT NULL
             );
             """
@@ -55,7 +55,7 @@ def new_product(cursor, v1, v2):
 
 def insert_into_couriers_table():
     result = """
-        INSERT INTO couriers (courier_name, phone_number)
+        INSERT INTO couriers (name, phone_number)
         VALUES (%s, %s)
         RETURNING id;
         """
@@ -70,18 +70,21 @@ def new_courier(cursor, v1, v2):
     print(f"Inserted record ID: {new_id}")
 # ============================================
 
+def insert_into_orders_table():
+    result = """
+        INSERT INTO orders (customer_name, customer_address, customer_phone_number, status)
+        VALUES (%s, %s, %s, %s)
+        RETURNING id;
+        """
+    return result
 
-# def insert_into_couriers_table():
-
-# def new_courier(cursor, v1, etc):
-
-
-# ============================================
-
-
-# def insert_into_orders_table():
-
-# def new_order(cursor, v1, etc):
+def new_order(cursor, v1, v2, v3, v4):
+    print('Inserting new order...')
+    insert = insert_into_orders_table()
+    values = (v1, v2, v3, v4)
+    cursor.execute(insert, values)
+    new_id = cursor.fetchone()[0]
+    print(f"Inserted record ID: {new_id}")
 
 
 

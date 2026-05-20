@@ -52,11 +52,10 @@ def create_database_tables():
             print('Filling tables from CSV files...')
 
             # EXAMPLE
-            #new_product(cursor, 'Pizza', 9.99)
+            new_product(cursor, 'Mocha', 3.50)
+            new_product(cursor, 'Latte', 3.00)
+            new_product(cursor, 'Espresso', 2.50)
 
-
-            # fill_products_table()
-            # aalamm done
 
             # fill_couriers_table()
             new_courier(cursor, "Zohran", "07418 72148")
@@ -64,7 +63,9 @@ def create_database_tables():
             new_courier(cursor, "Xavier", "07239 82391")
 
             # fill_orders_table()
-            # ishak
+            new_order(cursor, "Alice", "123 Main St", "07123 45678", "Preparing")
+            new_order(cursor, "Bob", "456 Elm St", "07234 56789", "Out for Delivery")
+            new_order(cursor, "Charlie", "789 Oak St", "07345 67890", "Delivered")
 
 
     # ============================================
@@ -134,7 +135,7 @@ def extract_from_database():
 
             couriers = []
             for courier in records:
-                couriers.append({'name': courier[1], 'phone': courier[2]})
+                couriers.append({'name': courier[1], 'phone_number': courier[2]})
 
 
             # EXTRACT DATA FROM ORDERS TABLE
@@ -198,34 +199,26 @@ def load_into_database(Products, couriers, orders):
                     (name, float(price))
                 )
             inserted += 1
-
             connection.commit()
             print(f'Inserted {inserted} product records.')
 
-            print('Opening cursor...')
-            cursor = connection.cursor()
 
-        print('Loading couriers into database...')
 
-        for courier in couriers:
-            cursor.execute(
-        "INSERT INTO couriers (name, phone) VALUES (%s, %s)",
-        (
-            courier["name"],
-            courier["phone_number"]
-        )
-        )
+            print('Loading couriers into database...')
+            for courier in couriers:
+                cursor.execute(
+            "INSERT INTO couriers (name, phone_number) VALUES (%s, %s)",
+            (
+                courier["name"],
+                courier["phone_number"]
+            )
+            )
 
-        connection.commit()
-        print("Couriers loaded into database successfully")
+            connection.commit()
+            print("Couriers loaded into database successfully")
 
-            
 
-        print('\nClosing cursor. . .')
-        cursor.close()
-        print('All done!')
-    
-
+              #LOAD ORDERS INTO DATABASE
             print('Loading orders into database...')
             for order in orders: 
                 cursor.execute(
@@ -247,6 +240,7 @@ def load_into_database(Products, couriers, orders):
                 connection.commit()
                 print("Orders loaded into database successfully")
 
+            
 
             print('\nClosing cursor. . .')
             cursor.close()
