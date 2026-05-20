@@ -52,21 +52,17 @@ def create_database_tables():
             print('Filling tables from CSV files...')
 
             # EXAMPLE
-            new_product(cursor, 'Pizza', 9.99)
-
+            new_product(cursor, 'Mocha', 3.50)
+            new_product(cursor, 'Americano', 2.39)
+            new_product(cursor, 'Chai Latte', 2.75)
 
             # fill_products_table()
             # aalamm done
 
             # fill_couriers_table()
             new_courier(cursor, "Zohran", "07418 72148")
-<<<<<<< HEAD
-            new_courier(cursor, "Yasmin" "07369 36939")
-            new_courier(cursor, "Xavier" "07239 82391")
-=======
             new_courier(cursor, "Yasmin", "07369 36939")
             new_courier(cursor, "Xavier", "07239 82391")
->>>>>>> 6aed9dfcdc12ab9f7af5b0a14f72058b0e03ee13
 
             # fill_orders_table()
             # ishak
@@ -125,32 +121,38 @@ def extract_from_database():
             for row in records:
                 print(row)
 
-<<<<<<< HEAD
-            Products = 0
-            
-            # EXTRACT DATA FROM COURIER TABLE
-            print('Displaying all couriers. . .')
-            cursor.execute("SELECT * FROM couriers;")
-            records = cursor.fetchall()             
-            for row in records:
-                print(row)
-
-            couriers = []
-            for courier in records:
-                couriers.append({'name': courier[1], 'phone_number': courier[2]})
-=======
             Products = []
             for product in records:
                 Products.append({'name': product[1], 'price': product[2]})
             
             # EXTRACT DATA FROM COURIER TABLE
+            print('Displaying all couriers. . .')
+            cursor.execute("SELECT * FROM couriers;")
+            records = cursor.fetchall()
+            for row in records:
+                print(row)
 
-            couriers = 0
->>>>>>> 6aed9dfcdc12ab9f7af5b0a14f72058b0e03ee13
+            couriers = []
+            for courier in records:
+                couriers.append({'name': courier[1], 'phone': courier[2]})
+
 
             # EXTRACT DATA FROM ORDERS TABLE
+            print('Displaying all orders. . .')
+            cursor.execute("SELECT * FROM orders;")
+            records = cursor.fetchall()
+            for row in records: 
+                print(row)
 
-            orders = 0
+            orders = []
+            for order in records:
+                orders.append({
+                    'customer_name': order[1],
+                    'customer_address': order[2],
+                    'customer_phone_number': order[3],
+                    'status': order[4]
+                })
+
 
     # ============================================
     #                 CLOSE CONNECTION
@@ -170,16 +172,32 @@ def extract_from_database():
 # ==================================================================================
 
 
-def load_into_database():
+def load_into_database(Products, couriers, orders):
     try:
-        # pull lists of products, couriers, orders from app.py into here
-        # and push them into database
-    
-<<<<<<< HEAD
+        ### SETUP THE DATABASE CONNECTION
+        print('Opening connection...')
+        conn_string = f'host={host_name} dbname={database_name} user={user_name} password={user_password}'
+        # Establish a database connection
+        with psycopg2.connect(conn_string) as connection:
+
+            print('Opening cursor...')
+            cursor = connection.cursor()
+
+     # ============================================
+
+        # teds loading products into the database
+
+
+        # ishak loading couriers into database
+
+
+
+        # loading orders someonelse
+
+
+
 
     
-=======
->>>>>>> 6aed9dfcdc12ab9f7af5b0a14f72058b0e03ee13
     # ============================================
     #                 CLOSE CONNECTION
 
@@ -200,7 +218,3 @@ def load_into_database():
 # test area for running the connection functions
 
 create_database_tables()
-<<<<<<< HEAD
-=======
-extract_from_database()
->>>>>>> 6aed9dfcdc12ab9f7af5b0a14f72058b0e03ee13
