@@ -56,7 +56,7 @@ def insert_into_couriers_table():
     result = """
         INSERT INTO couriers (courier_name, phone_number)
         VALUES (%s, %s)
-        RETURNING courier_id;
+        RETURNING id;
         """
     return result 
     
