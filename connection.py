@@ -52,11 +52,10 @@ def create_database_tables():
             print('Filling tables from CSV files...')
 
             # EXAMPLE
-            #new_product(cursor, 'Pizza', 9.99)
+            new_product(cursor, 'Mocha', 3.50)
+            new_product(cursor, 'Latte', 3.00)
+            new_product(cursor, 'Espresso', 2.50)
 
-
-            # fill_products_table()
-            # aalamm done
 
             # fill_couriers_table()
             new_courier(cursor, "Zohran", "07418 72148")
@@ -64,7 +63,9 @@ def create_database_tables():
             new_courier(cursor, "Xavier", "07239 82391")
 
             # fill_orders_table()
-            # ishak
+            new_order(cursor, "Alice", "123 Main St", "07123 45678", "Preparing")
+            new_order(cursor, "Bob", "456 Elm St", "07234 56789", "Out for Delivery")
+            new_order(cursor, "Charlie", "789 Oak St", "07345 67890", "Delivered")
 
 
     # ============================================
@@ -197,11 +198,15 @@ def load_into_database(Products, couriers, orders):
                     (name, float(price))
                 )
             inserted += 1
-
             connection.commit()
             print(f'Inserted {inserted} product records.')
 
 
+
+
+
+
+              #LOAD ORDERS INTO DATABASE
             print('Loading orders into database...')
             for order in orders: 
                 cursor.execute(
@@ -223,10 +228,13 @@ def load_into_database(Products, couriers, orders):
                 connection.commit()
                 print("Orders loaded into database successfully")
 
+            
 
             print('\nClosing cursor. . .')
             cursor.close()
             print('All done!')
+
+
     except Exception as ex:
         print('Failed to:', ex)
 

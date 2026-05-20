@@ -70,18 +70,21 @@ def new_courier(cursor, v1, v2):
     print(f"Inserted record ID: {new_id}")
 # ============================================
 
+def insert_into_orders_table():
+    result = """
+        INSERT INTO orders (customer_name, customer_address, customer_phone_number, status)
+        VALUES (%s, %s, %s, %s)
+        RETURNING id;
+        """
+    return result
 
-# def insert_into_couriers_table():
-
-# def new_courier(cursor, v1, etc):
-
-
-# ============================================
-
-
-# def insert_into_orders_table():
-
-# def new_order(cursor, v1, etc):
+def new_order(cursor, v1, v2, v3, v4):
+    print('Inserting new order...')
+    insert = insert_into_orders_table()
+    values = (v1, v2, v3, v4)
+    cursor.execute(insert, values)
+    new_id = cursor.fetchone()[0]
+    print(f"Inserted record ID: {new_id}")
 
 
 
