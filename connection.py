@@ -196,20 +196,14 @@ def load_into_database(Products, couriers, orders):
             print('Loading products into database...')
             inserted = 0
             for product in Products:
-                if 'name' in product and 'price' in product:
-                    name = product['name']
-                    price = product['price']
-                elif 'product_name' in product and 'price' in product:
-                    name = product['product_name']
-                    price = product['price']
-                else:
-                    print('Skipping invalid product entry:', product)
-                    continue
                 cursor.execute(
                     "INSERT INTO products (product_name, price) VALUES (%s, %s);",
-                    (name, float(price))
+                    (
+                        product['name'], 
+                        float(product['price'])
+                    )
                 )
-            inserted += 1
+                inserted += 1
             connection.commit()
             print(f'Inserted {inserted} product records.')
 

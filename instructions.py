@@ -3,7 +3,7 @@ def create_product_table():
     result = """
             CREATE TABLE IF NOT EXISTS products (
                 id SERIAL PRIMARY KEY,
-                name VARCHAR(20) NOT NULL,
+                product_name VARCHAR(20) NOT NULL,
                 price DECIMAL(10, 2) NOT NULL
             );
             """
