@@ -2,7 +2,6 @@ from products import *
 from orders import *
 from couriers import *
 from display import *
-from save import *
 from connection import *
 
 # ================================================================================
@@ -25,10 +24,7 @@ while is_app_running == True:
     choice = int(input("\nSelect 0, 1, 2 or 3: "))
 
     if choice == 0: 
-        load_into_database(Products)
-        #save_products_to_csv(Products)
-        #save_orders_to_csv(orders)
-        #save_couriers_to_csv(couriers)
+        load_into_database(Products, couriers, orders)
 
         print("Exiting app") 
         is_app_running = False # This will finally fail the while loop condition

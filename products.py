@@ -14,7 +14,13 @@ def create_product_menu():
     return result
 
 
-# NEED A save_products_to_csv() FUNCTION TOO
+def save_products_to_csv(Products):
+    with open("products.csv", "w", newline="") as file:
+        writer = csv.writer(file)
+        writer.writerow(["name", "price"])
+
+        for product in Products:
+            writer.writerow([product["name"], product["price"]])
 
 
 #---------------APP FUNCTIONS---------------------
