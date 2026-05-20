@@ -135,10 +135,6 @@ def extract_from_database():
             for courier in records:
                 couriers.append({'name': courier[1], 'phone': courier[2]})
 
-<<<<<<< HEAD
-            couriers = 0
-=======
->>>>>>> 14680cb4b98b8737a807e9a5b6477cd2a7b856c4
 
             # EXTRACT DATA FROM ORDERS TABLE
             print('Displaying all orders. . .')
@@ -175,45 +171,6 @@ def extract_from_database():
 # ==================================================================================
 
 
-<<<<<<< HEAD
-def load_into_database(Products, couriers, orders):
-    try:
-        conn_string = f'host={host_name} dbname={database_name} user={user_name} password={user_password}'
-        # Establish a database connection
-        with psycopg2.connect(conn_string) as connection:
-
-            print('Opening cursor...')
-            cursor = connection.cursor()
-
-        print('Loading couriers into database...')
-
-        for courier in couriers:
-            cursor.execute(
-        "INSERT INTO couriers (name, phone) VALUES (%s, %s)",
-        (
-            courier["name"],
-            courier["phone_number"]
-        )
-        )
-
-        connection.commit()
-        print("Couriers loaded into database successfully")
-        
-    except Exception as ex:
-        print('Failed to:', ex)
-        # pull lists of products, couriers, orders from app.py into here
-        # and push them into database
-    
-
-    # ============================================
-    #                 CLOSE CONNECTION
-
-        print('\nClosing cursor. . .')
-            # cursor.close()
-        print('All done!')
-
-            # The connection will automatically close here
-=======
 def load_into_database(Products):
     try:
         print('Opening connection...')
@@ -243,10 +200,29 @@ def load_into_database(Products):
             connection.commit()
             print(f'Inserted {inserted} product records.')
 
-            print('\nClosing cursor. . .')
-            cursor.close()
-            print('All done!')
->>>>>>> 14680cb4b98b8737a807e9a5b6477cd2a7b856c4
+            print('Opening cursor...')
+            cursor = connection.cursor()
+
+        print('Loading couriers into database...')
+
+        for courier in couriers:
+            cursor.execute(
+        "INSERT INTO couriers (name, phone) VALUES (%s, %s)",
+        (
+            courier["name"],
+            courier["phone_number"]
+        )
+        )
+
+        connection.commit()
+        print("Couriers loaded into database successfully")
+
+            
+
+        print('\nClosing cursor. . .')
+        cursor.close()
+        print('All done!')
+    
     except Exception as ex:
         print('Failed to:', ex)
 
@@ -260,8 +236,5 @@ def load_into_database(Products):
 
 create_database_tables()
 extract_from_database()
-<<<<<<< HEAD
-=======
 
 
->>>>>>> 14680cb4b98b8737a807e9a5b6477cd2a7b856c4
