@@ -79,6 +79,7 @@ def create_database_tables():
             for row in records:
                 print(row)
 
+                
             print('\nClosing cursor. . .')
             cursor.close()
             print('All done!')
@@ -171,11 +172,48 @@ def extract_from_database():
 # ==================================================================================
 
 
-def load_into_database():
+def load_into_database(Products, couriers, orders):
     try:
+    
+    # ============================================
+    #            SETUP THE DATABASE CONNECTION
+        
+        print('Opening connection...')
+        conn_string = f'host={host_name} dbname={database_name} user={user_name} password={user_password}'
+        # Establish a database connection
+        with psycopg2.connect(conn_string) as connection:
+
+            print('Opening cursor...')
+            cursor = connection.cursor()
         # pull lists of products, couriers, orders from app.py into here
         # and push them into database
-    
+ 
+    # ============================================
+    #                 LOAD TO DATABASE
+
+            #LOAD ORDERS INTO DATABASE
+            print('Loading orders into database...')
+            for order in orders: 
+                cursor.execute(
+                    """
+                    INSERT INTO orders (
+                    customer_name,
+                    customer_address,
+                    customer_phone_number,
+                    status
+                    )
+                    VALUES (%s, %s, %s, %s);
+                    """,
+                    (
+                        order["customer_name"],
+                        order["customer_address"],
+                        order["customer_phone_number"],
+                        order["status"]
+                    ))
+                connection.commit()
+                print("Orders loaded into database successfully")
+
+
     # ============================================
     #                 CLOSE CONNECTION
 
@@ -184,6 +222,8 @@ def load_into_database():
             print('All done!')
 
             # The connection will automatically close here
+
+
     except Exception as ex:
         print('Failed to:', ex)
 
