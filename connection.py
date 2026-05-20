@@ -59,7 +59,9 @@ def create_database_tables():
             # aalamm done
 
             # fill_couriers_table()
-            fill_couriers_table(cursor)
+            new_courier(cursor, "Zohran", "07418 72148")
+            new_courier(cursor, "Yasmin", "07369 36939")
+            new_courier(cursor, "Xavier", "07239 82391")
 
             # fill_orders_table()
             # ishak
@@ -111,15 +113,24 @@ def extract_from_database():
 
             print('Extracting data from database...')
 
+            # EXTRACT DATA FROM PRODUCT TABLE
             print('Displaying all records. . .')
             cursor.execute("SELECT * FROM products;")
             records = cursor.fetchall()
             for row in records:
                 print(row)
+
+            Products = []
+            for product in records:
+                Products.append({'name': product[1], 'price': product[2]})
             
             # EXTRACT DATA FROM COURIER TABLE
 
+            couriers = 0
+
             # EXTRACT DATA FROM ORDERS TABLE
+
+            orders = 0
 
     # ============================================
     #                 CLOSE CONNECTION
@@ -128,11 +139,15 @@ def extract_from_database():
             cursor.close()
             print('All done!')
 
-            # The connection will automatically close here
+            return Products, couriers, orders
     except Exception as ex:
         print('Failed to:', ex)
 
     print("Connection closed.")
+
+
+# ==================================================================================
+# ==================================================================================
 
 
 def load_into_database():
@@ -160,3 +175,4 @@ def load_into_database():
 # test area for running the connection functions
 
 create_database_tables()
+extract_from_database()

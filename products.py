@@ -90,29 +90,29 @@ def add_product(Products):
         "price": add_product_price
     }
     Products.append(new_product)
-    print(f" Here is the menu {Products}")
-    print("Product successfully added!")
+    view_products(Products)
+    print("\nProduct successfully added!")
 
 
 #FUNCTION TO REPLACE ELIF 3
 def update_product(Products): 
     view_products(Products)
-    select_update_list = int(input("Select the product you would like to change: "))
+    select_update_list = int(input("\nSelect the product you would like to change: "))
 
-    new_product_name = input("Enter new product name ")
+    new_product_name = input("Enter new product name: ")
     new_product_price = float(input("Enter new product price: "))
 
     Products[select_update_list]['name'] = new_product_name #Go to that product, then change its name
     Products[select_update_list]['price'] = new_product_price
-    print(f"{Products}")
-    print("Product successfully updated!")
+    view_products(Products)
+    print("\nProduct successfully updated!")
 
 
 #FUNCTION TO REPLACE ELIF 4
 def delete_product(Products): 
     view_products(Products) 
-    select_delete_product = int(input("Select the product you would like to remove: "))
+    select_delete_product = int(input("\nSelect the product you would like to remove: "))
     Products.pop(select_delete_product)
-    print(f"{Products}")
-    print("Product successfully removed")
+    view_products(Products)
+    print("\nProduct successfully removed")
 
