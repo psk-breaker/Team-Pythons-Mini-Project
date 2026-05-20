@@ -79,6 +79,7 @@ def create_database_tables():
             for row in records:
                 print(row)
 
+                
             print('\nClosing cursor. . .')
             cursor.close()
             print('All done!')
@@ -203,6 +204,10 @@ def load_into_database(Products):
             print('\nClosing cursor. . .')
             cursor.close()
             print('All done!')
+
+            # The connection will automatically close here
+
+
     except Exception as ex:
         print('Failed to:', ex)
 
