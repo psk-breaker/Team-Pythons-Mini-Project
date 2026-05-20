@@ -182,6 +182,17 @@ def load_into_database(Products, couriers, orders):
             print('Opening cursor...')
             cursor = connection.cursor()
 
+            cursor.execute("DROP TABLE IF EXISTS products;")
+            cursor.execute("DROP TABLE IF EXISTS couriers;")
+            cursor.execute("DROP TABLE IF EXISTS orders;")
+
+            create_table_sql = create_product_table()
+            cursor.execute(create_table_sql)
+            create_table_sql = create_courier_table()
+            cursor.execute(create_table_sql)
+            create_table_sql = create_order_table()
+            cursor.execute(create_table_sql)
+
             print('Loading products into database...')
             inserted = 0
             for product in Products:
@@ -218,7 +229,7 @@ def load_into_database(Products, couriers, orders):
             print("Couriers loaded into database successfully")
 
 
-              #LOAD ORDERS INTO DATABASE
+            # LOAD ORDERS INTO DATABASE
             print('Loading orders into database...')
             for order in orders: 
                 cursor.execute(
@@ -257,7 +268,7 @@ def load_into_database(Products, couriers, orders):
 
 # test area for running the connection functions
 
-create_database_tables()
-extract_from_database()
+# create_database_tables()
+# extract_from_database()
 
 

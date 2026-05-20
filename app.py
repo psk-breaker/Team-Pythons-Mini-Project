@@ -6,9 +6,6 @@ from connection import *
 
 # ================================================================================
 Products, couriers, orders = extract_from_database()
-#Products = create_product_menu()
-#orders = create_order_menu()
-#couriers = load_couriers()
 
 
 # ================================================================================
@@ -26,7 +23,7 @@ while is_app_running == True:
         load_into_database(Products, couriers, orders)
 
         print("Exiting app") 
-        is_app_running = False # This will finally fail the while loop condition
+        is_app_running = False 
 
 
 # ==================================================================================
