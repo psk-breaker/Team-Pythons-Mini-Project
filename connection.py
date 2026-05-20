@@ -52,7 +52,7 @@ def create_database_tables():
             print('Filling tables from CSV files...')
 
             # EXAMPLE
-            new_product(cursor, 'Pizza', 9.99)
+            #new_product(cursor, 'Pizza', 9.99)
 
 
             # fill_products_table()
@@ -60,8 +60,8 @@ def create_database_tables():
 
             # fill_couriers_table()
             new_courier(cursor, "Zohran", "07418 72148")
-            new_courier(cursor, "Yasmin" "07369 36939")
-            new_courier(cursor, "Xavier" "07239 82391")
+            new_courier(cursor, "Yasmin", "07369 36939")
+            new_courier(cursor, "Xavier", "07239 82391")
 
             # fill_orders_table()
             # ishak
@@ -148,23 +148,42 @@ def extract_from_database():
 # ==================================================================================
 
 
-def load_into_database():
+def load_into_database(Products):
     try:
-        # pull lists of products, couriers, orders from app.py into here
-        # and push them into database
-    
-    # ============================================
-    #                 CLOSE CONNECTION
+        print('Opening connection...')
+        conn_string = f'host={host_name} dbname={database_name} user={user_name} password={user_password}'
+        with psycopg2.connect(conn_string) as connection:
+            print('Opening cursor...')
+            cursor = connection.cursor()
+
+            print('Loading products into database...')
+            inserted = 0
+            for product in Products:
+                if 'name' in product and 'price' in product:
+                    name = product['name']
+                    price = product['price']
+                elif 'product_name' in product and 'price' in product:
+                    name = product['product_name']
+                    price = product['price']
+                else:
+                    print('Skipping invalid product entry:', product)
+                    continue
+                cursor.execute(
+                    "INSERT INTO products (product_name, price) VALUES (%s, %s);",
+                    (name, float(price))
+                )
+            inserted += 1
+
+            connection.commit()
+            print(f'Inserted {inserted} product records.')
 
             print('\nClosing cursor. . .')
-            # cursor.close()
+            cursor.close()
             print('All done!')
-
-            # The connection will automatically close here
     except Exception as ex:
         print('Failed to:', ex)
 
-    print("Connection closed.")
+    print('Connection closed.')
 
 
 # =================================================================================
@@ -173,3 +192,5 @@ def load_into_database():
 # test area for running the connection functions
 
 create_database_tables()
+
+
