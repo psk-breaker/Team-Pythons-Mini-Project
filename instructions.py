@@ -20,6 +20,7 @@ def create_courier_table():
             """
     return result
 
+
 def create_order_table():
     result = """
     CREATE TABLE IF NOT EXISTS Orders (

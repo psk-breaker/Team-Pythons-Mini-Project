@@ -113,15 +113,22 @@ def extract_from_database():
 
             print('Extracting data from database...')
 
+            # EXTRACT DATA FROM PRODUCT TABLE
             print('Displaying all records. . .')
             cursor.execute("SELECT * FROM products;")
             records = cursor.fetchall()
             for row in records:
                 print(row)
+
+            Products = 0
             
             # EXTRACT DATA FROM COURIER TABLE
 
+            couriers = 0
+
             # EXTRACT DATA FROM ORDERS TABLE
+
+            orders = 0
 
     # ============================================
     #                 CLOSE CONNECTION
@@ -130,11 +137,15 @@ def extract_from_database():
             cursor.close()
             print('All done!')
 
-            # The connection will automatically close here
+            return Products, couriers, orders
     except Exception as ex:
         print('Failed to:', ex)
 
     print("Connection closed.")
+
+
+# ==================================================================================
+# ==================================================================================
 
 
 def load_into_database():
