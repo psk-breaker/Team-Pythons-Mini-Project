@@ -79,6 +79,7 @@ def create_database_tables():
             for row in records:
                 print(row)
 
+                
             print('\nClosing cursor. . .')
             cursor.close()
             print('All done!')
@@ -171,7 +172,8 @@ def extract_from_database():
 # ==================================================================================
 
 
-def load_into_database(Products):
+
+def load_into_database(Products, couriers, orders):
     try:
         print('Opening connection...')
         conn_string = f'host={host_name} dbname={database_name} user={user_name} password={user_password}'
@@ -223,6 +225,33 @@ def load_into_database(Products):
         cursor.close()
         print('All done!')
     
+
+            print('Loading orders into database...')
+            for order in orders: 
+                cursor.execute(
+                    """
+                    INSERT INTO orders (
+                    customer_name,
+                    customer_address,
+                    customer_phone_number,
+                    status
+                    )
+                    VALUES (%s, %s, %s, %s);
+                    """,
+                    (
+                        order["customer_name"],
+                        order["customer_address"],
+                        order["customer_phone_number"],
+                        order["status"]
+                    ))
+                connection.commit()
+                print("Orders loaded into database successfully")
+
+
+            print('\nClosing cursor. . .')
+            cursor.close()
+            print('All done!')
+
     except Exception as ex:
         print('Failed to:', ex)
 
