@@ -60,8 +60,13 @@ def create_database_tables():
 
             # fill_couriers_table()
             new_courier(cursor, "Zohran", "07418 72148")
+<<<<<<< HEAD
             new_courier(cursor, "Yasmin" "07369 36939")
             new_courier(cursor, "Xavier" "07239 82391")
+=======
+            new_courier(cursor, "Yasmin", "07369 36939")
+            new_courier(cursor, "Xavier", "07239 82391")
+>>>>>>> 6aed9dfcdc12ab9f7af5b0a14f72058b0e03ee13
 
             # fill_orders_table()
             # ishak
@@ -120,6 +125,7 @@ def extract_from_database():
             for row in records:
                 print(row)
 
+<<<<<<< HEAD
             Products = 0
             
             # EXTRACT DATA FROM COURIER TABLE
@@ -132,6 +138,15 @@ def extract_from_database():
             couriers = []
             for courier in records:
                 couriers.append({'name': courier[1], 'phone_number': courier[2]})
+=======
+            Products = []
+            for product in records:
+                Products.append({'name': product[1], 'price': product[2]})
+            
+            # EXTRACT DATA FROM COURIER TABLE
+
+            couriers = 0
+>>>>>>> 6aed9dfcdc12ab9f7af5b0a14f72058b0e03ee13
 
             # EXTRACT DATA FROM ORDERS TABLE
 
@@ -160,8 +175,11 @@ def load_into_database():
         # pull lists of products, couriers, orders from app.py into here
         # and push them into database
     
+<<<<<<< HEAD
 
     
+=======
+>>>>>>> 6aed9dfcdc12ab9f7af5b0a14f72058b0e03ee13
     # ============================================
     #                 CLOSE CONNECTION
 
@@ -182,3 +200,7 @@ def load_into_database():
 # test area for running the connection functions
 
 create_database_tables()
+<<<<<<< HEAD
+=======
+extract_from_database()
+>>>>>>> 6aed9dfcdc12ab9f7af5b0a14f72058b0e03ee13
