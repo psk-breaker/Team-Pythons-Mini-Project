@@ -52,7 +52,7 @@ def create_database_tables():
             print('Filling tables from CSV files...')
 
             # EXAMPLE
-            new_product(cursor, 'Pizza', 9.99)
+            #new_product(cursor, 'Pizza', 9.99)
 
 
             # fill_products_table()
@@ -125,12 +125,37 @@ def extract_from_database():
                 Products.append({'name': product[1], 'price': product[2]})
             
             # EXTRACT DATA FROM COURIER TABLE
+            print('Displaying all couriers. . .')
+            cursor.execute("SELECT * FROM couriers;")
+            records = cursor.fetchall()
+            for row in records:
+                print(row)
 
+            couriers = []
+            for courier in records:
+                couriers.append({'name': courier[1], 'phone': courier[2]})
+
+<<<<<<< HEAD
             couriers = 0
+=======
+>>>>>>> 14680cb4b98b8737a807e9a5b6477cd2a7b856c4
 
             # EXTRACT DATA FROM ORDERS TABLE
+            print('Displaying all orders. . .')
+            cursor.execute("SELECT * FROM orders;")
+            records = cursor.fetchall()
+            for row in records: 
+                print(row)
 
-            orders = 0
+            orders = []
+            for order in records:
+                orders.append({
+                    'customer_name': order[1],
+                    'customer_address': order[2],
+                    'customer_phone_number': order[3],
+                    'status': order[4]
+                })
+
 
     # ============================================
     #                 CLOSE CONNECTION
@@ -150,6 +175,7 @@ def extract_from_database():
 # ==================================================================================
 
 
+<<<<<<< HEAD
 def load_into_database(Products, couriers, orders):
     try:
         conn_string = f'host={host_name} dbname={database_name} user={user_name} password={user_password}'
@@ -187,10 +213,44 @@ def load_into_database(Products, couriers, orders):
         print('All done!')
 
             # The connection will automatically close here
+=======
+def load_into_database(Products):
+    try:
+        print('Opening connection...')
+        conn_string = f'host={host_name} dbname={database_name} user={user_name} password={user_password}'
+        with psycopg2.connect(conn_string) as connection:
+            print('Opening cursor...')
+            cursor = connection.cursor()
+
+            print('Loading products into database...')
+            inserted = 0
+            for product in Products:
+                if 'name' in product and 'price' in product:
+                    name = product['name']
+                    price = product['price']
+                elif 'product_name' in product and 'price' in product:
+                    name = product['product_name']
+                    price = product['price']
+                else:
+                    print('Skipping invalid product entry:', product)
+                    continue
+                cursor.execute(
+                    "INSERT INTO products (product_name, price) VALUES (%s, %s);",
+                    (name, float(price))
+                )
+            inserted += 1
+
+            connection.commit()
+            print(f'Inserted {inserted} product records.')
+
+            print('\nClosing cursor. . .')
+            cursor.close()
+            print('All done!')
+>>>>>>> 14680cb4b98b8737a807e9a5b6477cd2a7b856c4
     except Exception as ex:
         print('Failed to:', ex)
 
-    print("Connection closed.")
+    print('Connection closed.')
 
 
 # =================================================================================
@@ -200,3 +260,8 @@ def load_into_database(Products, couriers, orders):
 
 create_database_tables()
 extract_from_database()
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 14680cb4b98b8737a807e9a5b6477cd2a7b856c4
