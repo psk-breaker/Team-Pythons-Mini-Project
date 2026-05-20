@@ -125,12 +125,33 @@ def extract_from_database():
                 Products.append({'name': product[1], 'price': product[2]})
             
             # EXTRACT DATA FROM COURIER TABLE
+            print('Displaying all couriers. . .')
+            cursor.execute("SELECT * FROM couriers;")
+            records = cursor.fetchall()
+            for row in records:
+                print(row)
 
-            couriers = 0
+            couriers = []
+            for courier in records:
+                couriers.append({'name': courier[1], 'phone': courier[2]})
+
 
             # EXTRACT DATA FROM ORDERS TABLE
+            print('Displaying all orders. . .')
+            cursor.execute("SELECT * FROM orders;")
+            records = cursor.fetchall()
+            for row in records: 
+                print(row)
 
-            orders = 0
+            orders = []
+            for order in records:
+                orders.append({
+                    'customer_name': order[1],
+                    'customer_address': order[2],
+                    'customer_phone_number': order[3],
+                    'status': order[4]
+                })
+
 
     # ============================================
     #                 CLOSE CONNECTION
