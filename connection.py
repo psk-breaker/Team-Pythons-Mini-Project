@@ -226,26 +226,26 @@ def load_into_database(Products, couriers, orders):
         print('All done!')
     
 
-            print('Loading orders into database...')
-            for order in orders: 
-                cursor.execute(
+        print('Loading orders into database...')
+        for order in orders: 
+            cursor.execute(
                     """
-                    INSERT INTO orders (
-                    customer_name,
-                    customer_address,
-                    customer_phone_number,
-                    status
-                    )
-                    VALUES (%s, %s, %s, %s);
-                    """,
-                    (
-                        order["customer_name"],
-                        order["customer_address"],
-                        order["customer_phone_number"],
-                        order["status"]
-                    ))
-                connection.commit()
-                print("Orders loaded into database successfully")
+                INSERT INTO orders (
+                customer_name,
+                customer_address,
+                customer_phone_number,
+                status
+                )
+                VALUES (%s, %s, %s, %s);
+                """,
+                (
+                    order["customer_name"],
+                    order["customer_address"],
+                    order["customer_phone_number"],
+                    order["status"]
+                ))
+            connection.commit()
+            print("Orders loaded into database successfully")
 
 
             print('\nClosing cursor. . .')
