@@ -17,7 +17,6 @@ Products, couriers, orders = extract_from_database()
 
 is_app_running = True
 
-Products = create_product_menu()
 
 while is_app_running == True:
     display_main_menu()
