@@ -15,7 +15,18 @@ def create_order_menu():
     except FileNotFoundError:
         return []
 
+def save_orders_to_csv(orders):
+    with open("orders.csv", "w", newline="") as file:
+        writer = csv.writer(file)
+        writer.writerow(["customer_name", "customer_address", "customer_phone_number", "status"])
 
+        for order in orders:
+            writer.writerow([
+                order["customer_name"],
+                order["customer_address"],
+                order["customer_phone_number"],
+                order["status"]
+            ])
 
 #---------------APP FUNCTIONS---------------------
 # Orders Menu:

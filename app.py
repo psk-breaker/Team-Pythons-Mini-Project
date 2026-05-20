@@ -2,11 +2,9 @@ from products import *
 from orders import *
 from couriers import *
 from display import *
-from save import *
 from connection import *
 
 # ================================================================================
-
 Products, couriers, orders = extract_from_database()
 #Products = create_product_menu()
 #orders = create_order_menu()
@@ -16,17 +14,17 @@ Products, couriers, orders = extract_from_database()
 # ================================================================================
 
 
+
 is_app_running = True
+
+Products = create_product_menu()
 
 while is_app_running == True:
     display_main_menu()
     choice = int(input("\nSelect 0, 1, 2 or 3: "))
 
     if choice == 0: 
-        # load_into_database()
-        # save_products_to_csv(Products)
-        # save_orders_to_csv(orders)
-        # save_couriers_to_csv(couriers)
+        load_into_database(Products, couriers, orders)
 
         print("Exiting app") 
         is_app_running = False # This will finally fail the while loop condition
