@@ -24,9 +24,9 @@ while is_app_running == True:
 
     if choice == 0: 
         # load_into_database()
-        save_products_to_csv(Products)
-        save_orders_to_csv(orders)
-        save_couriers_to_csv(couriers)
+        # save_products_to_csv(Products)
+        # save_orders_to_csv(orders)
+        # save_couriers_to_csv(couriers)
 
         print("Exiting app") 
         is_app_running = False # This will finally fail the while loop condition
