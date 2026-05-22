@@ -42,7 +42,7 @@ def display_order_menu():
 def view_orders(orders):
     print("\nOrders List:")
     for index, order in enumerate(orders):
-        print(f"{index}: {order}")
+        print(f"{index}: {order['customer_name']} - {order['customer_address']} - {order['customer_phone_number']} - {order['status']}")
 
 
 
